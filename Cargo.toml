@@ -1,0 +1,20 @@
+[package]
+name = "civ6-hof-merge"
+version = "0.1.0"
+authors = ["Sebastian J. <zeeman@zeeman.de>"]
+edition = "2018"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.60"
+serde_rusqlite = "0.26.0"
+
+maplit = "1.0.2"
+tempfile = "3.1.0"
+
+log = "0.4.11"
+env_logger = "0.8.2"
+
+[dependencies.rusqlite]
+version = "0.24.2"
+features = ["serde_json"]
