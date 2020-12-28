@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cargo build --release --verbose
+    - name: Run tests
+      run: cargo test --verbose
+    - name: Create executable for Linux
+      run: cargo build --release
+    - name: Create executable for OSX
+      run: echo 😬
+    - name: Prepare Windows toolchain
+      run: rustup target add x86_64-pc-windows-gnu && rustup toolchain install stable-x86_64-pc-windows-gnu
+    - name: Create Windows executable
+      run: cargo build --release --target x86_64-pc-windows-gnu
